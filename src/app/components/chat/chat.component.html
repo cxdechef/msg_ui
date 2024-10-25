@@ -1,0 +1,50 @@
+<div class="container-fluid mt-5">
+    <div id="chatHeader" class="d-flex align-items-center justify-content-between mb-5">
+      <h2>Welcome to {{roomName}}</h2>
+      <button (click)="leaveChat()" class="btn btn-danger">Leave chat</button>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Connected Users</h2>
+        <ul class="list-group">
+          <ng-container *ngFor="let user of this.chatService.connectedUsers$ | async">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{user}}</span>
+            <span class="badge bg-success rounded-pill">Online</span>
+          </li>
+        </ng-container>
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-body">
+  
+            <ng-container #scroll *ngFor="let message of messages">
+              <div [ngClass]="{'received-container': message.user != loggedInUserName, 'sent-container': message.user === loggedInUserName}">
+               <div class="d-flex flex-column">
+                <div *ngIf="message.user != loggedInUserName">
+                  <img src="/chat.svg" width="25" alt="chat">
+                </div>
+                <p [ngClass]="{'received': message.user != loggedInUserName, 'sent': message.user === loggedInUserName}">{{message.message}}</p>
+              </div>
+            </div>
+            </ng-container>
+  
+        
+            
+          </div>
+          <div class="card-footer">
+            <form>
+              <div class="mb-3">
+                <textarea (keydown.enter)="sendMessage()" [(ngModel)]="inputMessage" placeholder="Type a message" class="form-control" name="message" required></textarea>
+              </div>
+              <div class="text-end">
+                <button (click)="sendMessage()" type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

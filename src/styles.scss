@@ -1,0 +1,56 @@
+$bg-color: #000f19;
+$logo-color: #23c896;
+$card-color: #001e23;
+$border-color: #05464b;
+$btn-color: #05464b;
+$disabled-color: #05464ba3;
+$hover-color: #0a5a5a;
+$red-color: #c82323;
+$white-color: #f5f5f7;
+
+
+
+
+
+
+* {
+
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+h1, h2, p {
+    color: #f5f5f7 !important;
+}
+
+body {
+    background-color: $bg-color;
+    
+}
+
+.btn-primary {
+    background-color: $btn-color;
+    border-color: $border-color;
+    border-radius: 9999px;
+
+    &:hover {
+        background-color: $hover-color;
+        border-color: $hover-color;
+    }
+    &:active {
+        background-color: $btn-color !important;
+        border-color: $btn-color !important;
+    }
+    &:disabled {
+        background-color: $disabled-color;
+        border-color: $disabled-color !important;
+
+    }
+}
+
+
+.card {
+    background-color: $card-color;
+    border-color: $border-color;
+}
